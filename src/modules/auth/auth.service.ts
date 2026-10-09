@@ -60,3 +60,18 @@ export const loginUserService = async (email: string, password: string) => {
     throw error;
   }
 };
+
+export const meService = async (userId: number) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) throw new CustomError(404, "user not found");
+
+    return toSafeUser(user);
+  } catch (error) {
+    // console.log(error)
+    throw error;
+  }
+};

@@ -4,8 +4,13 @@ import {
   type Request,
   type Response,
 } from "express";
-import { loginUserController, registerUserController } from "./auth.controller";
+import {
+  loginUserController,
+  meController,
+  registerUserController,
+} from "./auth.controller";
 import { rateLimit } from "express-rate-limit";
+import { authMiddleware } from "../../middleware/authMiddleware";
 
 const router = Router();
 
@@ -26,6 +31,13 @@ router.post(
   rateLimiter,
   (req: Request, res: Response, next: NextFunction) =>
     loginUserController(req, res).catch(next),
+);
+
+router.get(
+  "/me",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    meController(req, res).catch(next),
 );
 
 export default router;
