@@ -35,7 +35,7 @@ router.patch(
     updateTodoController(req, res).catch(next),
 );
 
-router.patch(
+router.delete(
   "/:id",
   authMiddleware,
   (req: Request, res: Response, next: NextFunction) =>

@@ -52,7 +52,7 @@ export const updateTodoService = async (
 
     if (!todo) throw new CustomError(404, "todo not found");
 
-    if (todo.created_by === userId)
+    if (todo.created_by !== userId)
       throw new CustomError(401, "unauthorised action");
 
     const result = await prisma.user.update({
@@ -80,7 +80,7 @@ export const deleteTodoService = async (todoId: number, userId: number) => {
 
     if (!todo) throw new CustomError(404, "todo not found");
 
-    if (todo.created_by === userId)
+    if (todo.created_by !== userId)
       throw new CustomError(401, "unauthorised action");
 
     const result = await prisma.todo.delete({
