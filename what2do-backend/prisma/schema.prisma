@@ -29,30 +29,12 @@ model User {
 
 model Todo {
   id            Int        @id @default(autoincrement())
-  content       String
+  title         String
+  description   String
   created_at    DateTime   @default(now())
+  scheduled_at  DateTime
   last_modified DateTime   @updatedAt
   status        TodoStatus @default(SCHEDULED)
-  category_id   Int
-  category      Category   @relation(fields: [category_id], references: [id], onDelete: Restrict)
   created_by    Int
   user          User       @relation(fields: [created_by], references: [id], onDelete: Cascade)
-
-  statusHistories StatusHistory[]
-}
-
-model Category {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-
-  todos Todo[]
-}
-
-model StatusHistory {
-  id         Int        @id @default(autoincrement())
-  todo_id    Int
-  todo       Todo       @relation(fields: [todo_id], references: [id], onDelete: Cascade)
-  updated_at DateTime   @default(now())
-  from       TodoStatus
-  to         TodoStatus
 }
