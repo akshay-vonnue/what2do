@@ -3,7 +3,7 @@ import "dotenv/config";
 
 export const signToken = (payload: { userId: number }) => {
   return jwt.sign(payload, process.env.JWT_SECRET as string, {
-    expiresIn: "1hr",
+    expiresIn: "4hr",
   });
 };
 

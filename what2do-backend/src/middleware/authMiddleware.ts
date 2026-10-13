@@ -12,6 +12,7 @@ export const authMiddleware = async (
 ) => {
   try {
     const token = req.headers.authorization?.split(" ")[1] as string;
+    console.log(token)
     const user = verifyToken(token);
     (req as AuthenticatedRequest).userId = Number(user.userId);
     next();

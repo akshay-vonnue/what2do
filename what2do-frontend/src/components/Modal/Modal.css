@@ -1,0 +1,11 @@
+.modal{
+    inset: 0;
+    backdrop-filter: blur(10px);
+    position: absolute;
+}
+
+.form-wrapper{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+}

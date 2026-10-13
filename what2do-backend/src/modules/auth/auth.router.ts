@@ -15,7 +15,7 @@ import { authMiddleware } from "../../middleware/authMiddleware";
 const router = Router();
 
 const rateLimiter = rateLimit({
-  max: 5,
+  max: 500,
   windowMs: 15 * 60 * 1000,
 });
 

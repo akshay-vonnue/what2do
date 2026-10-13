@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "bun src/index.ts",
-    "db:migrate":"bunx prisma migrate dev",
-    "db:generate":"bunx prisma generate"
+    "db:migrate": "bunx prisma migrate dev",
+    "db:generate": "bunx prisma generate"
   },
   "devDependencies": {
     "@types/bun": "latest",

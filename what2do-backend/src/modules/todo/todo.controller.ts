@@ -5,6 +5,7 @@ import {
   deleteTodoService,
   getAllTodoService,
   updateTodoService,
+  updateTodoStatusService,
 } from "./todo.service";
 
 export const createTodoController = async (req: Request, res: Response) => {
@@ -14,7 +15,7 @@ export const createTodoController = async (req: Request, res: Response) => {
   const result = await createTodoService(
     title,
     description,
-    scheduled_at,
+    new Date(scheduled_at),
     userId,
   );
 
@@ -32,6 +33,7 @@ export const updateTodoController = async (req: Request, res: Response) => {
   const userId = (req as AuthenticatedRequest).userId;
   const todoId = Number(req.params.id);
 
+  console.log("body:",req.body,userId,todoId)
   const result = await updateTodoService(req.body, userId, todoId);
   return res.status(200).json(result);
 };
@@ -40,6 +42,18 @@ export const deleteTodoController = async (req: Request, res: Response) => {
   const userId = (req as AuthenticatedRequest).userId;
   const todoId = Number(req.params.id);
 
-  const result = await deleteTodoService(userId, todoId);
+  const result = await deleteTodoService(todoId, userId);
+  return res.status(200).json(result);
+};
+
+export const updateTodoStatusController = async (
+  req: Request,
+  res: Response,
+) => {
+  const userId = (req as AuthenticatedRequest).userId;
+  const todoId = Number(req.params.id);
+  const { status } = req.body;
+
+  const result = await updateTodoStatusService(userId, todoId, status);
   return res.status(200).json(result);
 };

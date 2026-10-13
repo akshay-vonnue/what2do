@@ -9,7 +9,9 @@ import { ErrorHandler } from "./middleware/errorHandler";
 
 export const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin:'http://localhost:5173'
+}));
 app.use(helmet());
 app.use(express.json());
 

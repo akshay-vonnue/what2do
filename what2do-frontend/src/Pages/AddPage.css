@@ -1,0 +1,46 @@
+.addPage{
+    display: flex;
+    justify-content: center;
+}
+
+.addtodo-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    text-align: left;
+}
+
+.addtodo-form label{
+    font-size: 0.8rem;
+}
+
+.addtodo-form input{
+    padding: 8px;
+}
+
+.addTodo-buttons{
+    margin-top: 1rem;
+    display: flex;
+    gap: 20px;
+}
+
+.addTodo-buttons button{
+    padding: 8px;
+    flex: 1;
+}
+
+.add-button{
+    flex: 1;
+    padding: 8px;
+    width: 100%;
+    background-color: rgb(25, 74, 138);
+    border: none;
+    border-radius: 5px;
+}
+
+.login-error-message{
+    color: red;
+    align-self: center;
+    font-size: 0.8rem;
+}
