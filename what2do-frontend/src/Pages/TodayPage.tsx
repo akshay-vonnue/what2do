@@ -31,7 +31,7 @@ function TodayPage() {
     };
 
     fetchTodos();
-  }, [token]);
+  }, [token,isModalOpen,deleteTodo,updateStatus]);
 
   if (todos.length === 0) {
     return <div className="center-not-found">No todo records</div>;

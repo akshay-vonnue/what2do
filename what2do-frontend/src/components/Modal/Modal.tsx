@@ -33,6 +33,7 @@ function Modal({ todo, setModalOpen }: ModalProps) {
 
     setTimeout(() => {
       setLoading(false);
+      setModalOpen(false)
     }, 1000);
 
     updateTodo(String(todo.id), {

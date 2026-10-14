@@ -31,7 +31,7 @@ function UpcomingPage() {
     };
 
     fetchTodos();
-  }, [token]);
+  }, [token,isModalOpen,deleteTodo]);
 
   if (todos.length === 0) {
     return <div className="center-not-found">No todo records</div>;

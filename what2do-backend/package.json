@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "bun src/index.ts",
     "db:migrate": "bunx prisma migrate dev",
-    "db:generate": "bunx prisma generate"
+    "db:generate": "bunx prisma generate",
+    "db:seed":"bun prisma/seed.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
