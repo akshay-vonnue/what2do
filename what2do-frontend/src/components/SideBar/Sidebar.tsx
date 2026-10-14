@@ -18,6 +18,14 @@ const pages = [
     path: "/upcoming",
     name: "upcoming",
   },
+  {
+    path: "/completed",
+    name: "completed",
+  },
+  {
+    path: "/profile",
+    name: "profile",
+  },
 ];
 
 function Sidebar() {

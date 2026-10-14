@@ -25,12 +25,45 @@ export const createTodoService = async (
   }
 };
 
-export const getAllTodoService = async (userId: number) => {
+export const getAllTodoService = async (
+  userId: number,
+  today?: boolean,
+  upcoming?: boolean,
+  status?: string,
+) => {
   try {
+    const startTime = new Date();
+    startTime.setHours(0, 0, 0, 0);
+
+    const endTime = new Date();
+    endTime.setHours(23, 59, 59, 999);
+
+    const whereClause: any = {
+      created_by: userId,
+      ...(today && {
+        scheduled_at: {
+          gt: startTime,
+          lt: endTime,
+        },
+      }),
+      ...(upcoming && {
+        scheduled_at: {
+          gt: endTime,
+        },
+      }),
+    };
+
+    console.log(status !== undefined)
+    console.log(typeof status)
+    if (status !== undefined) {
+      console.log("status is", status);
+      whereClause.status = status ?? "SCHEDULED";
+    }
+
+    console.log(whereClause);
+
     const todos = await prisma.todo.findMany({
-      where: {
-        created_by: userId,
-      },
+      where: whereClause,
     });
 
     return todos;
@@ -44,7 +77,7 @@ export const updateTodoService = async (
   userId: number,
   todoId: number,
 ) => {
-  console.log("data:",data);
+  console.log("data:", data);
   try {
     const todo = await prisma.todo.findUnique({
       where: {
@@ -56,7 +89,8 @@ export const updateTodoService = async (
 
     console.log(typeof todo.created_by, typeof userId);
 
-    if (todo.created_by !== userId) throw new CustomError(401, "unauthorised action");
+    if (todo.created_by !== userId)
+      throw new CustomError(401, "unauthorised action");
 
     const result = await prisma.todo.update({
       where: {
@@ -66,7 +100,7 @@ export const updateTodoService = async (
         ...data,
       },
     });
-    console.log(result)
+    console.log(result);
     return result;
   } catch (error) {
     throw error;

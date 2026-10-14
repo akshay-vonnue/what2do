@@ -5,6 +5,8 @@ import InboxPage from "./Pages/InboxPage";
 import TodayPage from "./Pages/TodayPage";
 import UpcomingPage from "./Pages/UpcomingPage";
 import LoginPage from "./Pages/LoginPage";
+import CompletedPage from "./Pages/CompletedPage";
+import ProfilePage from "./Pages/ProfilePage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/inbox" element={<InboxPage />} />
           <Route path="/today" element={<TodayPage />} />
           <Route path="/upcoming" element={<UpcomingPage />} />
+          <Route path="/completed" element={<CompletedPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </>

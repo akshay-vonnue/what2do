@@ -24,8 +24,16 @@ export const createTodoController = async (req: Request, res: Response) => {
 
 export const getAllTodoController = async (req: Request, res: Response) => {
   const userId = (req as AuthenticatedRequest).userId;
+  const { today } = req.query;
+  const { upcoming } = req.query;
+  const { status } = req.query;
 
-  const result = await getAllTodoService(userId);
+  const result = await getAllTodoService(
+    userId,
+    Boolean(today),
+    Boolean(upcoming),
+    status as string,
+  );
   return res.status(200).json(result);
 };
 
@@ -33,7 +41,7 @@ export const updateTodoController = async (req: Request, res: Response) => {
   const userId = (req as AuthenticatedRequest).userId;
   const todoId = Number(req.params.id);
 
-  console.log("body:",req.body,userId,todoId)
+  console.log("body:", req.body, userId, todoId);
   const result = await updateTodoService(req.body, userId, todoId);
   return res.status(200).json(result);
 };
@@ -54,6 +62,6 @@ export const updateTodoStatusController = async (
   const todoId = Number(req.params.id);
   const { status } = req.body;
 
-  const result = await updateTodoStatusService(userId, todoId, status);
+  const result = await updateTodoStatusService(todoId, userId, status);
   return res.status(200).json(result);
 };

@@ -63,10 +63,31 @@ export const useTodo = () => {
     }
   };
 
+  const updateStatus = async (id: string) => {
+    const res = await fetch(
+      `${import.meta.env.VITE_API_BASE_URL}/todo/${id}/status`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          status: "DONE",
+        }),
+      },
+    );
+    const data = await res.json();
+    if (!res.ok) {
+      setErrorMessages(data.message);
+    }
+  };
+
   return {
     todos,
     errorMessages,
     deleteTodo,
     updateTodo,
+    updateStatus,
   };
 };

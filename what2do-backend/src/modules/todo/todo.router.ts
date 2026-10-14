@@ -9,6 +9,7 @@ import {
   deleteTodoController,
   getAllTodoController,
   updateTodoController,
+  updateTodoStatusController,
 } from "./todo.controller";
 import { authMiddleware } from "../../middleware/authMiddleware";
 
@@ -40,6 +41,13 @@ router.delete(
   authMiddleware,
   (req: Request, res: Response, next: NextFunction) =>
     deleteTodoController(req, res).catch(next),
+);
+
+router.patch(
+  "/:id/status",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    updateTodoStatusController(req, res).catch(next),
 );
 
 export default router;

@@ -38,6 +38,11 @@
     font-size: 0.8rem;
 }
 
+.todo-date{
+    font-size: 0.8rem;
+    color: rgba(223, 45, 45, 0.918);
+}
+
 .todo-buttons{
     display: flex;
     gap: 10px;

@@ -31,7 +31,7 @@ function LoginPage() {
 
     if (result.ok) {
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/");
     } else {
       setErrorMessage(data.message);

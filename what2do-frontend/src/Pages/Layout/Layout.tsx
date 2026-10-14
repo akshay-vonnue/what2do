@@ -1,16 +1,20 @@
 import "./Layout.css";
-import { Outlet } from "react-router";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/SideBar/Sidebar";
+import { AuthContext } from "../../hooks/useAuthContext";
+import ProtectedRoute from "../ProtectedRoute";
 
 function Layout() {
+  const user = JSON.parse(localStorage.getItem("user") as string);
   return (
     <>
-      <div className="layout-structure">
-        <Header />
-        <Sidebar />
-        <Outlet />
-      </div>
+      <AuthContext.Provider value={user}>
+        <div className="layout-structure">
+          <Header />
+          <Sidebar />
+          <ProtectedRoute />
+        </div>
+      </AuthContext.Provider>
     </>
   );
 }

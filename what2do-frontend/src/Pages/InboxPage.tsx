@@ -24,8 +24,8 @@ function InboxPage() {
     _e: React.SyntheticEvent<HTMLImageElement>,
     todo: Todo,
   ) => {
-      setCurrentTodo(todo);
-      setModalOpen(true)
+    setCurrentTodo(todo);
+    setModalOpen(true);
   };
 
   return (
@@ -56,7 +56,9 @@ function InboxPage() {
       <div className="login-error-message">
         {errorMessages && `${errorMessages}`}
       </div>
-      {isModalOpen && <Modal todo={currentTodo as Todo} setModalOpen={setModalOpen}/>}
+      {isModalOpen && (
+        <Modal todo={currentTodo as Todo} setModalOpen={setModalOpen} />
+      )}
     </div>
   );
 }
