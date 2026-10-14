@@ -8,7 +8,7 @@ export const useTodo = () => {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/todo`, {
+      const res = await fetch(`/todo`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

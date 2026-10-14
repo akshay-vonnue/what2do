@@ -1,0 +1,10 @@
+{
+  "name": "my-app-root",
+  "workspaces": [
+    "what2do-frontend",
+    "what2do-backend"
+  ],
+  "scripts": {
+    "dev": "bun --filter '*' dev"
+  }
+}

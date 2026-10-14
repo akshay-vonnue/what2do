@@ -1,0 +1,28 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "what2do-backend": {
+      "root": "what2do-backend",
+      "framework": "express"
+    },
+    "what2do-frontend": {
+      "root": "what2do-frontend",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+        "source":"/api/(.*)",
+        "destination":{
+            "service" : "what2do-backend",
+            "path":"/$1"
+        }
+    },
+    {
+        "source":"/(.*)",
+        "destination":{
+            "service":"what2do-frontend"
+        }
+    }
+  ]
+}

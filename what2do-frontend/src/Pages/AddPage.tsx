@@ -19,7 +19,7 @@ function AddPage() {
     const date = formData.scheduled_at
       ? new Date(formData.scheduled_at).toISOString()
       : null;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/todo`, {
+    const res = await fetch(`/todo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

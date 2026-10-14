@@ -13,19 +13,16 @@ function LoginPage() {
   console.log(import.meta.env.VITE_API_BASE_URL);
 
   const fetchData = async () => {
-    const result = await fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+    const result = await fetch(`/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
     const data = await result.json();
     console.log(data);
 

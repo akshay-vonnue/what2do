@@ -9,6 +9,7 @@ import CompletedPage from "./Pages/CompletedPage";
 import ProfilePage from "./Pages/ProfilePage";
 
 function App() {
+  console.log(import.meta.env.VITE_API_BASE_URL,import.meta.env.JWT_SECRET)
   return (
     <>
       <Routes>

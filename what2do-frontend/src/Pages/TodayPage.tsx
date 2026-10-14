@@ -14,16 +14,13 @@ function TodayPage() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/todo/?today=true&status=SCHEDULED`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          }
+      const res = await fetch(`/todo/?today=true&status=SCHEDULED`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       const data = await res.json();
       if (res.ok) {
         setTodos(data);
@@ -31,7 +28,7 @@ function TodayPage() {
     };
 
     fetchTodos();
-  }, [token,isModalOpen,deleteTodo,updateStatus]);
+  }, [token, isModalOpen, deleteTodo, updateStatus]);
 
   if (todos.length === 0) {
     return <div className="center-not-found">No todo records</div>;
