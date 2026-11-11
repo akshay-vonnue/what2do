@@ -1,0 +1,29 @@
+.header{
+    background-color: rgb(15, 79, 177);
+    padding: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    grid-area: header;
+}
+
+.user-profile{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.app-header-section img{
+    width: 40px;
+
+}
+
+.app-header-section h2{
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.app-header-section{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}

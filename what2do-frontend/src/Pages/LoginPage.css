@@ -1,0 +1,33 @@
+.login-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.login-wrapper h2{
+    align-self: center;
+    font-size: 1.5rem;
+}
+
+.login-wrapper label{
+    font-size: 0.7rem;
+}
+
+.login-wrapper input{
+    padding: 0.5rem 2rem;
+}
+
+.login-wrapper button{
+    margin-top: 14px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(25, 74, 138);
+    border: none;
+}
+
+.login-error-message{
+    color: red;
+    align-self: center;
+    font-size: 0.8rem;
+}

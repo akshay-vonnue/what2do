@@ -1,0 +1,8 @@
+.center-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 46%;
+  top: 40%;
+}
